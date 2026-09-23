@@ -1,1 +1,62 @@
-placeholder
+Create a complete HTML5 game called "Flippy the Chip" — a Flappy Bird-style platformer about a computer chip named Flippy.
+
+GAME CONCEPT:
+Flippy is a tiny silicon chip who fell off the assembly line and must navigate through a dangerous circuit board to get back home. Tap/space to make Flippy hop. Dodge obstacles, collect bits, survive as long as possible.
+
+CORE MECHANICS:
+1. Flappy Bird physics: gravity pulls Flippy down, each flap/hop gives upward velocity
+2. Auto-scrolling world that moves left at increasing speed
+3. Obstacle pipes themed as server racks / firewall barriers with gaps to fly through
+4. Collision with obstacles = game over
+5. Score increases by 1 for each obstacle passed ("bits collected")
+6. High score saved to localStorage
+7. Ground/ceiling collision = game over
+
+VISUAL DESIGN (all drawn with canvas — no images):
+- Flippy: a cute computer chip character — square body with rounded corners, gold pins on sides, a face with eyes, cyan/green circuit traces on the body, a pulsing LED. Rotate up when flapping, down when falling.
+- Obstacles: server rack pipes — dark metal with LED indicators (blinking green/red/blue), ventilation slots, cable details. Blue glow on gap edges.
+- Background: scrolling circuit board — traces, pads, vias. Two parallax layers (far dim, near bright). Scrolling binary rain Matrix effect (green 0s and 1s falling).
+- Ground: circuit board texture strip at the bottom.
+
+EFFECTS:
+- Particle explosion when Flippy crashes (fire-colored particles)
+- Sparkle particles when passing an obstacle (green/cyan)
+- Screen shake on crash
+- Player trail (fading chip silhouettes behind Flippy)
+
+AUDIO (Web Audio API, no files):
+- Flap sound: short square wave blip
+- Score sound: ascending chime
+- Crash sound: descending sawtooth with noise
+- Game over sound: low triangle wave
+- Sound toggle with 'S' key, mute icon on screen
+
+UI SCREENS:
+- Menu: "FLIPPY THE CHIP" title with glowing cyan animation, "Help Flippy get home! Dodge the racks, collect the bits!" subtitle, blinking "PRESS SPACE OR TAP TO START", high score in gold, floating chip icons in background
+- In-game HUD: "BITS: XX" top center (cyan glow), "BEST: XX" below it (gold), speed indicator bottom right
+- Game over: "SYSTEM CRASH" in red glitch text, "BITS COLLECTED: XX", "NEW HIGH SCORE!" celebration if applicable, blinking restart prompt, high score in gold
+- Pause: 'P' key, "PAUSED" overlay
+
+DIFFICULTY PROGRESSION:
+- Speed increases gradually from 2.5 to 8.0
+- Gap between obstacles narrows from 180 to 120 minimum
+- Color palette shifts by score: 0-9 blue, 10-19 green, 20-39 purple, 40-69 orange, 70-99 red, 100+ white/hot
+
+CSS EFFECTS:
+- CRT scan-line overlay
+- Vignette
+- Glow pulse animation on title text
+- Responsive for mobile (viewport meta, touch events)
+
+POWER-UPS (5% spawn chance):
+- Shield (blue circle): protects from 1 crash
+- Slow-mo (purple clock): half speed for 5 seconds
+- Double bits (gold star): 2x score for 10 seconds
+- Visual HUD indicators when active
+
+ACHIEVEMENTS (saved to localStorage, slide-in notification):
+- "FIRST BIT" (1), "FULL BYTE" (8), "FIREWALL BREACHER" (25), "HALF KILOBIT" (50), "CENTURY CHIP" (100)
+
+Make the game complete, polished, and genuinely fun to play. Output the complete HTML file now.
+
+You MUST use the create_text_file tool to write index.html. Do NOT output code as text.

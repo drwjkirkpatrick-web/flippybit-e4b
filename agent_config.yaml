@@ -6,10 +6,10 @@
 llm:
   base_url: "http://127.0.0.1:8091/v1"
   model: "gemma-4-e4b-qat"
-  max_tokens: 17000        # per-turn budget (reasoning + generation)
+  max_tokens: 25000        # per-turn budget (reasoning + generation)
   temperature: 0.6
   top_p: 0.95
-  timeout: 4000.0          # httpx timeout in seconds (CRITICAL: default 600s kills E4B)
+  timeout: 6000.0          # httpx timeout: 25K tokens at 30 tok/s + reasoning
   context_window: 32768    # model's context window (must match -c flag on server)
 
 # Agent loop
