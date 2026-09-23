@@ -336,6 +336,11 @@ async def run_agent(task_prompt: str, cfg: dict, project_dir: str, log_file: str
                         except json.JSONDecodeError:
                             args = {}
 
+                        # Auto-inject relative_path if E4B omitted it for create_text_file
+                        if tool_name == "create_text_file" and "relative_path" not in args:
+                            args["relative_path"] = output_filename
+                            log_event({"type": "info", "summary": f"Turn {turn}: auto-injected relative_path={output_filename}", "turn": turn}, log_file)
+
                         log_event({"type": "tool_call", "summary": f"Turn {turn}: {tool_name}({json.dumps(args)[:150]})", "turn": turn, "tool": tool_name, "args": args}, log_file)
                         total_tool_calls += 1
 
