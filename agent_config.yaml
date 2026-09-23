@@ -1,0 +1,32 @@
+# ─── E4B + Serena Agent Bridge Config ───────────────────────────
+# Copy this file to your project and edit as needed.
+# The bridge script (agent_bridge.py) reads this automatically.
+
+# LLM settings (llama.cpp OpenAI-compatible API)
+llm:
+  base_url: "http://127.0.0.1:8091/v1"
+  model: "gemma-4-e4b-qat"
+  max_tokens: 17000        # per-turn budget (reasoning + generation)
+  temperature: 0.6
+  top_p: 0.95
+  timeout: 4000.0          # httpx timeout in seconds (CRITICAL: default 600s kills E4B)
+  context_window: 32768    # model's context window (must match -c flag on server)
+
+# Agent loop
+agent:
+  max_turns: 30
+  max_tool_result_chars: 8000  # truncate long Serena tool results
+
+# Serena MCP
+serena:
+  bin: "/home/walker/.local/bin/serena"
+  context: ""             # leave empty for default (NOT "ide" — it strips file tools)
+  # project: ""           # override project dir; default = config file's parent dir
+
+# Output
+output:
+  filename: "index.html"  # fallback save filename when E4B outputs code as text
+  log_file: "agent_log.json"
+
+# System prompt: loaded from system_prompt.txt in the same dir as this config.
+# If system_prompt.txt doesn't exist, a default coding-agent prompt is used.
